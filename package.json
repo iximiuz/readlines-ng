@@ -1,0 +1,29 @@
+{
+  "name": "line-reader-gen",
+  "version": "0.1.0",
+  "description": "Tiny async generator to read files line by line",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/iximiuz/line-reader-gen.git"
+  },
+  "keywords": [
+    "lines",
+    "async",
+    "generator",
+    "readline",
+    "stream"
+  ],
+  "author": "Ivan Velichko <iximiuz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iximiuz/line-reader-gen/issues"
+  },
+  "homepage": "https://github.com/iximiuz/line-reader-gen#readme"
+}
