@@ -7,7 +7,6 @@ const { LineStream } = require('../index.js');
 
 async function testit() {
   await Promise.all([
-    testone(0, 0),
     testone(1, 1),
     testone(2, 2),
   ]);
@@ -21,19 +20,17 @@ async function testit() {
 
 async function testone(testNo, linesNum) {
   const filename = path.join(__dirname, `fixture${testNo}.txt`);
-  const file = fs.createWriteStream(filename);
+  const file = await fs.promises.open(filename, 'w');
   let fileSize = 0;
-  for (let i = 0; i < linesNum; i++) {
-    const line = utils.randomLine()
-    file.write(line);
-    fileSize += line.length;
+  try {
+    for (let i = 0; i < linesNum; i++) {
+      const line = utils.randomLine()
+      await file.write(i === 0 ? line : ('\n' + line));
+      fileSize += line.length;
+    }
+  } finally {
+    await file.close();
   }
-
-  file.end();
-  await new Promise((res, rej) => {
-    file.once('error', rej);
-    file.once('close', res);
-  });
 
   const { fileSize: actualSize, linesNum: actualLinesNum } = await readFile(filename);
   await fs.promises.unlink(filename);
