@@ -1,5 +1,7 @@
 # Tiny and fast async generator to read streams line by line
 
+[![Build Status](https://travis-ci.org/iximiuz/readlines-ng.svg)](https://travis-ci.org/iximiuz/readlines-ng)
+
 **Node 10+ is required.** This package provides very simple but feature-reach functionality to consume readable streams or files line by line. It's also quite fast.
 
 ## Features:
