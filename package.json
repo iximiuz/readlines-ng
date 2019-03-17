@@ -1,7 +1,7 @@
 {
-  "name": "line-reader-gen",
-  "version": "0.1.0",
-  "description": "Tiny async generator to read files line by line",
+  "name": "readlines-ng",
+  "version": "0.2.0",
+  "description": "Tiny and fast async generator to read streams line by line",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/iximiuz/line-reader-gen.git"
+    "url": "git+ssh://git@github.com/iximiuz/readlines-ng.git"
   },
   "keywords": [
     "lines",
@@ -25,7 +25,10 @@
   "author": "Ivan Velichko <iximiuz@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iximiuz/line-reader-gen/issues"
+    "url": "https://github.com/iximiuz/readlines-ng/issues"
   },
-  "homepage": "https://github.com/iximiuz/line-reader-gen#readme"
+  "homepage": "https://github.com/iximiuz/readlines-ng#readme",
+  "engines": {
+    "node": ">=10.0.0"
+  }
 }

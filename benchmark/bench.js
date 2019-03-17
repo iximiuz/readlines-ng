@@ -1,18 +1,18 @@
 const fs = require('fs');
 const { readlines, LineStream } = require('../index.js');
 
-async function wcg(filename) {
+async function wcg(filename, encoding = null) {
   let counter = 0;
-  for await (const _ of readlines(filename, { chunkSize: 256*1024, encoding: null })) {
+  for await (const _ of readlines(filename, { chunkSize: 256*1024, encoding })) {
     counter++;
   }
   return counter;
 }
 
-function wcs(filename) {
+function wcs(filename, encoding = null) {
   const reader = new LineStream(filename, {
+    encoding,
     chunkSize: 256*1024,
-    encoding: null,
   });
 
   let counter = 0;
@@ -47,7 +47,8 @@ async function bench(name, job) {
   console.log(await job());
   const [s, ns] = process.hrtime(start);
 
-  console.log('Done in', `${s}.${ns}`);
+  console.log('Done in', `${s}.${ns}`, 'sec');
+  console.log();
 }
 
 async function main() {
@@ -56,9 +57,11 @@ async function main() {
     process.exit(1);
   }
 
-  await bench('line counter (async generator)', () => wcg(process.argv[2]));
-  await bench('line counter (readable stream)', () => wcs(process.argv[2]));
-  await bench('line counter (readline module)', () => wcrl(process.argv[2]));
+  await bench('lines counter (readline module)', () => wcrl(process.argv[2]));
+  await bench('lines counter (async generator)', () => wcg(process.argv[2]));
+  await bench('lines counter (async generator UTF-8)', () => wcg(process.argv[2], 'utf8'));
+  await bench('lines counter (readable stream)', () => wcs(process.argv[2]));
+  await bench('lines counter (readable stream UTF-8)', () => wcs(process.argv[2], 'utf8'));
 }
 
 main();
