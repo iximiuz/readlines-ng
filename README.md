@@ -24,5 +24,5 @@ Node 10+ is required. Only file reading via `fs.open()` and `fs.read()` is suppo
 ## Tests & Benchmark
 ```
 npm run test
-npm run bench -- </path/to/huge/file>
+npm run bench -- </path/to/huge/file>  # Node 11+ is required
 ```

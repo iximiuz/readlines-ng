@@ -1,7 +1,7 @@
 const fs = require('fs');
 const stream = require('stream');
 
-async function* readline(filename, options = {}) {
+async function* readlines(filename, options = {}) {
   const { chunkSize, sep, encoding } = { 
     chunkSize: 1024, 
     sep: '\n', 
@@ -19,7 +19,10 @@ async function* readline(filename, options = {}) {
       bufSize += bytesRead;
       buf = buf.slice(0, bufSize);
       if (bytesRead === 0) {
-        return encoding === null ? buf : buf.toString(encoding);
+        if (bufSize > 0) {
+            yield encoding === null ? buf : buf.toString(encoding);
+        }
+        break;
       }
 
       let searchOffset = Math.max(0, bufSize - bytesRead - sepSize);
@@ -51,7 +54,7 @@ class LineStream extends stream.Readable {
   constructor(filename, options = {}, readableOptions = {}) {
     super({ ...readableOptions, objectMode: true });
     this._reading = false;
-    this._lines = readline(filename, options); 
+    this._lines = readlines(filename, options); 
   }
 
   _read(size) {
@@ -65,9 +68,6 @@ class LineStream extends stream.Readable {
     while (true) {
       const { value: line, done } = await this._lines.next();
       if (done) {
-        if (line != null) {
-          this.push(line);
-        }
         this.push(null);
         break;
       }
@@ -81,7 +81,7 @@ class LineStream extends stream.Readable {
 }
 
 module.exports = {
-  readline,
+  readlines,
   LineStream,
 };
 

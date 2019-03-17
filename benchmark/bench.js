@@ -1,9 +1,9 @@
 const fs = require('fs');
-const { readline, LineStream } = require('../index.js');
+const { readlines, LineStream } = require('../index.js');
 
 async function wcg(filename) {
   let counter = 0;
-  for await (const _ of readline(filename, { chunkSize: 256*1024, encoding: null })) {
+  for await (const _ of readlines(filename, { chunkSize: 256*1024, encoding: null })) {
     counter++;
   }
   return counter;
@@ -25,8 +25,8 @@ function wcs(filename) {
 }
 
 function wcrl(filename) {
-  const rl = require('readline');
-  const reader = rl.createInterface({
+  const readline = require('readline');
+  const reader = readline.createInterface({
     input: fs.createReadStream(filename),
     crlfDelay: Infinity,
   });

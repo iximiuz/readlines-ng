@@ -7,6 +7,7 @@ const { LineStream } = require('../index.js');
 
 async function testit() {
   await Promise.all([
+    testone(0, 1),
     testone(1, 1),
     testone(2, 2),
   ]);

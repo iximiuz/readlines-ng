@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "node test/tests.js",
-    "bench": "node benchmark/bench.js"
+    "bench": "node benchmark/bench.js",
+    "gen": "node benchmark/gen.js"
   },
   "repository": {
     "type": "git",
