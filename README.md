@@ -35,9 +35,10 @@ for await (const line of reader) {
 }
 
 // Custom separator
-const datasource = new stream.PassThrough();
-assert(datasource.write('qux42'));
-assert(datasource.write('foobar42'));
+const { PassThrough } = require('stream');
+const datasource = new PassThrough();
+datasource.write('qux42');
+datasource.write('foobar42');
 datasource.end();
 
 const reader = new LineStream(filename, { sep: '42' });
