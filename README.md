@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/iximiuz/readlines-ng.svg)](https://travis-ci.org/iximiuz/readlines-ng)
 
-**Node 10+ is required.** This package provides very simple but feature-reach functionality to consume readable streams or files line by line. It's also quite fast.
+**Node 10+ is required.** This package provides very simple but feature-reach functionality to consume readable streams or files line by line. It's also quite fast (up to 30% faster than [`readline`](https://nodejs.org/api/readline.html#readline_example_read_file_stream_line_by_line)) and has no dependencies.
 
 ## Features:
 - reading of files (by name)
