@@ -55,7 +55,7 @@ Trivial `wc -l` impl using this package exposes the performance better than the 
 npm run bench </path/to/huge/file>  # Node 11+ is required
 
 # File size ~2.8 GB
-> Benchmark: linescounter (readline module)
+> Benchmark: lines counter (readline module)
 > 5974719 lines found
 > Done in 5.757290349 sec
 
