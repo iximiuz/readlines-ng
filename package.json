@@ -1,6 +1,6 @@
 {
   "name": "readlines-ng",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Tiny and fast async generator to read streams line by line",
   "main": "index.js",
   "directories": {
